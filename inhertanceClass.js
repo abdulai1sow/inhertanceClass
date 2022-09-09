@@ -71,11 +71,17 @@ class BankAccount {
     const moneyIn = putIn + this.balance 
     console.log(moneyIn);
     return moneyIn
+    // this.balance += putIn
   }
   withdraw(bankWithdraw) {
     const takeOut = this.balance - bankWithdraw
+    // this.balance -= this.withdraw
   }
 }
+
+let abdulai = new BankAccount ('avdul', 388847, '397923hdg')
+console.log(abdulai.balance.withdraw(30000));
+console.log(abdulai);
 
 //checking account
 //enable overdraft
@@ -86,7 +92,7 @@ class checkAcc extends BankAccount {
   }
   overrideWithdraw() {
     const negativeWithdraw = 0;
-    if (this.balance < 0) {
+    if (this.balance <= 0) {
       console.log(`over draft budy!`);
     }
   }
@@ -114,3 +120,7 @@ class Governor{
 
 const voteTime = new Governor('republican', 'GA')
 console.log(voteTime);
+
+
+
+
