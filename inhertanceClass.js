@@ -67,41 +67,43 @@ class BankAccount {
     this.balance = balance
     this.acctNum = acctNum
   }
-  deposit(putIn) {
-    const moneyIn = putIn + this.balance 
-    console.log(moneyIn);
-    return moneyIn
-    // this.balance += putIn
+  deposit(amount) {
+    this.balance += amount
+    // const moneyIn = putIn + this.balance 
+    // console.log(moneyIn);
+    // return moneyIn
+    // // this.balance += putIn
   }
-  withdraw(bankWithdraw) {
-    const takeOut = this.balance - bankWithdraw
+  withdraw(amount) {
+    this.balance = this.balance - amount
+    // const takeOut = this.balance - bankWithdraw
     // this.balance -= this.withdraw
   }
 }
-
 let abdulai = new BankAccount ('avdul', 388847, '397923hdg')
 console.log(abdulai.balance.withdraw(30000));
 console.log(abdulai);
 
-//checking account
-//enable overdraft
 class checkAcc extends BankAccount {
-  constructor(name, balance, acctNum) {
-    super(name, balance, acctNum)
+  constructor(overDraftEnabled) {
+    super()
     this.overDraft = true
   }
-  overrideWithdraw() {
-    const negativeWithdraw = 0;
-    if (this.balance <= 0) {
-      console.log(`over draft budy!`);
-    }
+  overrideWithdraw(amount) {
+    if (this.overDraft && this.balance - amount < 0) {
+     this.balance =this.amount - amount
+    } else if (this.overDraft === false && this.balance - amount < 0) {
+      console.log('deposit more money');
+    } else {
+      this.balance = this.balance - amount
+   }
   }
 }
 
 ////////////////////////savings account/////////
 class savingAcc extends BankAccount{
-  constructor(name, balance, acctNum) {
-    super(name, balance, acctNum)
+  constructor() {
+    super()
     this.withdraw = false
   }
 }
